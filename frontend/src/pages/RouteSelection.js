@@ -65,10 +65,10 @@ function RouteSelection() {
       <div className="route-options">
         {routes.map((route, index) => (
           <div key={index} className="route-card">
-            <p>Distance: {route.distance} meters</p>
-            <p>Travel Time: {Math.round(route.travelTime / 60)} mins</p>
-            <p>Estimated Cost: ${route.costEstimate.toFixed(2)}</p>
-            <p>Environmental Impact: {route.environmentalImpact}</p>
+            <p>Distance: {route.distance ? `${(route.distance / 1000).toFixed(2)} km` : 'N/A'}</p>
+            <p>Travel Time: {route.travelTime ? `${Math.round(route.travelTime / 60)} mins` : 'N/A'}</p>
+            <p>Estimated Cost: ${route.costEstimate ? route.costEstimate.toFixed(2) : 'N/A'}</p>
+            <p>Environmental Impact: {route.environmentalImpact || 'N/A'}</p>
           </div>
         ))}
       </div>

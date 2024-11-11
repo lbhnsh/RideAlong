@@ -1,79 +1,68 @@
-// frontend/src/pages/RouteSelection.js
-import React, { useState } from 'react';
-import axios from 'axios';
+/* global H */
+import React, { useState, useEffect } from "react";
+import './RouteSelection.css'; 
 
-function RouteSelection() {
-  const [start, setStart] = useState('');
-  const [end, setEnd] = useState('');
-  const [mode, setMode] = useState('car');
-  const [routes, setRoutes] = useState([]);
-  const [filters, setFilters] = useState({ cost: true, convenience: false, sustainability: false });
+const RouteSelection = () => {
+  const [map, setMap] = useState(null);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
 
-  const handleSearchRoutes = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/routes', {
-        params: { start, end, mode },
+  // Initialize the map
+  useEffect(() => {
+    if (window.H) {
+      const platform = new window.H.service.Platform({
+        apikey: 'd2HJkl6aWcEoNbt6AHg4bFPl-s_XCBHdv-MBVhfZGWI'
       });
-      setRoutes(response.data);
-    } catch (error) {
-      console.error("Error fetching routes", error);
+      const defaultLayers = platform.createDefaultLayers();
+      const mapContainer = document.getElementById("mapContainer");
+      const mapInstance = new window.H.Map(mapContainer, defaultLayers.vector.normal.map, {
+        center: { lat: 37.7749, lng: -122.4194 }, // Default center (San Francisco)
+        zoom: 12
+      });
+      setMap(mapInstance);
+
+      // Add map events
+      mapInstance.addEventListener("tap", (evt) => handleMapClick(evt));
+    }
+  }, []);
+
+  // Handle map click to get coordinates
+  const handleMapClick = (event) => {
+    const coords = map.screenToGeo(event.currentPointer.viewportX, event.currentPointer.viewportY);
+
+    if (!start) {
+      setStart(coords);
+    } else {
+      setEnd(coords);
     }
   };
 
+  const resetMarkers = () => {
+    setStart(null);
+    setEnd(null);
+  };
+
   return (
-    <div className="route-selection">
+    <div className="route-selection-container">
       <h1>Plan Your Route</h1>
 
+      {/* Input Section */}
       <div className="input-section">
-        <input type="text" value={start} onChange={(e) => setStart(e.target.value)} placeholder="Starting Point" />
-        <input type="text" value={end} onChange={(e) => setEnd(e.target.value)} placeholder="Destination" />
-        <select value={mode} onChange={(e) => setMode(e.target.value)}>
-          <option value="car">Car</option>
-          <option value="bike">Bike</option>
-          <option value="pedestrian">Walk</option>
-        </select>
-        <button onClick={handleSearchRoutes}>Search Routes</button>
+        <button onClick={resetMarkers}>Reset</button>
       </div>
 
-      <div className="filters">
-        <label>
-          <input
-            type="checkbox"
-            checked={filters.cost}
-            onChange={() => setFilters({ ...filters, cost: !filters.cost })}
-          />
-          Cost
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={filters.convenience}
-            onChange={() => setFilters({ ...filters, convenience: !filters.convenience })}
-          />
-          Convenience
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={filters.sustainability}
-            onChange={() => setFilters({ ...filters, sustainability: !filters.sustainability })}
-          />
-          Sustainability
-        </label>
+      {/* Coordinate Display Section */}
+      <div className="coordinate-display">
+        <p><strong>Start:</strong> {start ? `${start.lat.toFixed(4)}, ${start.lng.toFixed(4)}` : 'Not selected'}</p>
+        <p><strong>End:</strong> {end ? `${end.lat.toFixed(4)}, ${end.lng.toFixed(4)}` : 'Not selected'}</p>
       </div>
 
-      <div className="route-options">
-        {routes.map((route, index) => (
-          <div key={index} className="route-card">
-            <p>Distance: {route.distance ? `${(route.distance / 1000).toFixed(2)} km` : 'N/A'}</p>
-            <p>Travel Time: {route.travelTime ? `${Math.round(route.travelTime / 60)} mins` : 'N/A'}</p>
-            <p>Estimated Cost: ${route.costEstimate ? route.costEstimate.toFixed(2) : 'N/A'}</p>
-            <p>Environmental Impact: {route.environmentalImpact || 'N/A'}</p>
-          </div>
-        ))}
-      </div>
+      {/* Map Container */}
+      <div id="mapContainer"></div>
+
+      {/* You can add route information card or other content here */}
     </div>
   );
-}
+};
 
 export default RouteSelection;

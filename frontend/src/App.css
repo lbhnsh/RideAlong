@@ -1,26 +1,161 @@
-.route-selection {
-  padding: 20px;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #f5f5f5;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.input-section input, .input-section select {
-  margin: 10px;
-  padding: 8px;
-}
-
-.filters {
-  margin: 20px 0;
-}
-
-.route-options {
+/* Container for Map and Controls */
+.route-selection-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 }
 
-.route-card {
-  border: 1px solid #ccc;
-  padding: 15px;
+.input-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  background-color: #00bcd4;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #00a1b2;
+}
+
+button:active {
+  background-color: #008c9e;
+}
+
+/* Coordinate Display Section */
+.coordinate-display {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.coordinate-display p {
+  margin: 5px 0;
+}
+
+.coordinate-display strong {
+  color: #00bcd4;
+}
+
+/* Map Container */
+#mapContainer {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+  background-color: #333;
+}
+
+input[type="text"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  margin-top: 10px;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  border-color: #00bcd4;
+  outline: none;
+}
+
+/* Dark Mode Card Styling */
+.card {
+  background-color: #242424;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.card h3 {
+  color: #f5f5f5;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.card .card-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-info span {
+  color: #00bcd4;
+  font-weight: bold;
+}
+
+.card .info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card .info-section div {
+  width: 45%;
+}
+
+.card .info-section div span {
+  font-size: 1  .1rem;
+  color: #b0b0b0;
+}
+
+.card .info-section div strong {
+  color: #fff;
 }

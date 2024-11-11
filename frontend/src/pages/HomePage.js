@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TransportCard from '../components/TransportCard';
+import './HomePage.css'; // Import the CSS file
 
 function HomePage() {
   const [transportOptions, setTransportOptions] = useState([]);
@@ -23,7 +24,12 @@ function HomePage() {
       <h1>Welcome to the Multi-Modal Ride-Sharing Platform</h1>
       <div className="transport-options">
         {transportOptions.map((option) => (
-          <TransportCard key={option._id} option={option} />
+          <div className="transport-card" key={option._id}>
+            <TransportCard option={option} />
+            <div className="details-button">
+              <span>Explore</span>
+            </div>
+          </div>
         ))}
       </div>
     </div>

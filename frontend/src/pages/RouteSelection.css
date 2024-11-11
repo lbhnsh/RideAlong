@@ -1,0 +1,91 @@
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #f5f5f5; /* Light text color */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  /* Main container */
+  .route-selection-container {
+    width: 80%; /* Broader container width */
+    max-width: 1200px; /* Maximum width to prevent it from getting too wide */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background for container */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Title */
+  .route-selection-container h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Section */
+  .input-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-section button {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .input-section button:hover {
+    background-color: #3700b3;
+  }
+  
+  /* Coordinate Display Section */
+  .coordinate-display {
+    background-color: #2c2c2c;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+  }
+  
+  .coordinate-display p {
+    margin: 5px 0;
+  }
+  
+  /* Map Container */
+  #mapContainer {
+    width: 100%; /* Full width */
+    height: 400px; /* Adjust the height as needed */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Additional Styling for Responsiveness */
+  @media (max-width: 768px) {
+    .route-selection-container {
+      width: 95%;
+      padding: 10px;
+    }
+  
+    .coordinate-display {
+      font-size: 1rem;
+    }
+  
+    .input-section button {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+  }
+  

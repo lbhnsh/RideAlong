@@ -4,6 +4,7 @@ import axios from 'axios';
 import RecentRoute from '../components/RecentRoute';
 import UpcomingTrip from '../components/UpcomingTrip';
 import Recommendation from '../components/Recommendation';
+import './UserDashboard.css'; 
 
 function UserDashboard() {
   const [dashboardData, setDashboardData] = useState(null);

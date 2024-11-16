@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #74ebd5, #acb6e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+    transform: perspective(600px) rotateX(10deg);
+  }
+  
+  input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  button {
+    width: 85%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  .toggle-btn {
+    background: #6c757d;
+  }
+  
+  .message {
+    color: red;
+    margin-top: 10px;
+  }
+  

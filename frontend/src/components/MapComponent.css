@@ -1,0 +1,179 @@
+.map-container {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .map-controls {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .map-controls input {
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .map-controls button {
+    padding: 5px 10px;
+    background: #4f5bd5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .map-controls button:hover {
+    background: #962fbf;
+  }
+  .car-marker {
+    width: 24px;
+    height: 24px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .travel-time {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    color: #2c2c2c;
+  }
+  /* CSS for custom markers */
+  .css-marker {
+    position: absolute;
+    width: 10px; /* Width of the rectangle */
+    height: 10px; /* Height of the rectangle */
+    background-color: blue;
+    transform: translate(-50%, -50%);
+    border-radius: 2px; /* Optional: slightly rounded corners */
+  }
+  
+.start-marker {
+  background-color: green;
+}
+
+.destination-marker {
+  background-color: red;
+}
+
+/* CSS for car marker */
+.car-marker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  /* background-image: url('https://cdn-icons-png.flaticon.com/512/743/743007.png'); Example car icon */
+  background-size: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Make sure the car is visible above the map */
+}
+
+/* CSS for distance board */
+.distance-board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 300px;
+  background-color: rgba(18, 1, 1, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: none;
+  z-index: 2000; /* Ensure it is above all map elements */
+  animation: fadeIn 3s ease-in-out;
+}
+
+.distance-board.visible {
+  display: block;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.distance-board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  width: 350px;
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 1px solid #444;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  z-index: 2000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.distance-board h3 {
+  margin: 0 0 15px;
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  text-align: left;
+}
+
+.distance-board .trip-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.distance-board .trip-detail p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.distance-board .trip-detail p strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #6c63ff;
+}
+
+.distance-board .distance {
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+}

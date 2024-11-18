@@ -1,0 +1,41 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #2a2a3d, #34344a);
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 3; /* Appears above sparkles */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar-brand {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Allows centering in the navbar */
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar-title {
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    font-weight: bold;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  

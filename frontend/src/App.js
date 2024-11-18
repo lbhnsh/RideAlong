@@ -12,8 +12,10 @@ function App() {
   return (
     <div className="App">
       {isLoggedIn ? <HomePage /> : <LoginSignupPage onLoginSuccess={handleLoginSuccess} />}
+      
     </div>
   );
 }
 
 export default App;
+

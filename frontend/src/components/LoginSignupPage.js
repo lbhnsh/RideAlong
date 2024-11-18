@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { login, signup } from '../api/authApi';
 import './LoginSignupPage.css';
+import Navbar from './Navbar';
 
 const LoginSignupPage = ({ onLoginSuccess }) => {
   const [isSignup, setIsSignup] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isFloating, setIsFloating] = useState(false);
 
   const handleToggle = () => {
     setIsSignup((prev) => !prev);
@@ -18,11 +20,15 @@ const LoginSignupPage = ({ onLoginSuccess }) => {
       if (isSignup) {
         const response = await signup(username, password);
         setMessage(response);
-        setIsSignup(false); // Switch to login after successful signup
+        setIsSignup(false);
       } else {
         const response = await login(username, password);
         setMessage(response);
-        onLoginSuccess(); // Proceed to HomePage after successful login
+        setIsFloating(true);
+
+        setTimeout(() => {
+          onLoginSuccess();
+        }, 500); // Match animation duration
       }
     } catch (err) {
       setMessage(err);
@@ -30,8 +36,23 @@ const LoginSignupPage = ({ onLoginSuccess }) => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="login-signup-page">
-      <div className="form-container">
+      <div className="sparkles">
+        {Array.from({ length: 100 }).map((_, index) => (
+          <div
+            key={index}
+            className="sparkle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+      <div className={`form-container ${isFloating ? 'floating' : ''}`}>
         <h2>{isSignup ? 'Sign Up' : 'Login'}</h2>
         <input
           type="text"
@@ -54,6 +75,7 @@ const LoginSignupPage = ({ onLoginSuccess }) => {
         {message && <p className="message">{message}</p>}
       </div>
     </div>
+    </>
   );
 };
 

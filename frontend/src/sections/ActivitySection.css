@@ -1,0 +1,57 @@
+.activity-container {
+    font-family: Arial, sans-serif;
+    background-color: #1f1f2e;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .ride-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow-y: auto; /* Enables scroll if the content overflows */
+    max-height: calc(100vh - 100px); /* Limits the height of the container */
+    padding: 10px 0;
+  }
+  
+  .ride-card {
+    background: #1e1e2c;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 220px;
+    min-width: 200px;
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .ride-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  .ride-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #4f5bd5;
+  }
+  
+  .ride-card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  .ride-card p strong {
+    color: #946e95;
+  }
+  

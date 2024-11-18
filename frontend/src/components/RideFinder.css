@@ -1,0 +1,226 @@
+.ride-finder-container {
+    font-family: Arial, sans-serif;
+    background-color: #1f1f2e;
+    color: white;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  .tab-menu {
+    display: flex;
+    justify-content: space-around;
+    background: #2a2a3d;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .tab-button {
+    background: none;
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .tab-button.active,
+  .tab-button:hover {
+    background: linear-gradient(135deg, #4f5bd5, #962fbf, #d62976, #fa7e1e);
+    background-size: 300% 300%;
+    animation: gradientMove 6s linear infinite;
+    color: white;
+    transform: scale(1.1);
+    border-color: transparent;
+  }
+  
+  .trip-details {
+    background: #2a2a3d;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .section-content {
+    background: #2a2a3d;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .cards-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .cards-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4f5bd5, #962fbf, #d62976, #fa7e1e);
+    border-radius: 10px;
+  }
+  
+  .card {
+    flex: 0 0 auto;
+    width: 220px;
+    background: #1e1e2c;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  .card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #4f5bd5;
+  }
+  
+  .card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  .suggestions-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #4f5bd5, #962fbf, #d62976, #fa7e1e);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .suggestions-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #2a2a3d;
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 15px;
+    
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #4f5bd5, #962fbf, #d62976, #fa7e1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.modal-content .suggestion-cards-container {
+    display: flex;
+    left: 10%;
+    gap: 15px; /* Space between cards */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line */
+    justify-content: space-between; /* Distributes space evenly */
+  }
+  
+  .suggestion-card {
+    background: #1e1e2c;
+    /* left: ; */
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%; /* Ensure cards take up 1/3rd of the width */
+    min-width: 220px; /* Ensures the cards don't get too small on smaller screens */
+    box-sizing: border-box;
+  }
+  
+  .suggestion-card h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #fa7e1e;
+  }
+  
+  .suggestion-card p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+  }
+  
+  .close-button {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #4f5bd5, #962fbf, #d62976, #fa7e1e);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .close-button:hover {
+    transform: scale(1.1);
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

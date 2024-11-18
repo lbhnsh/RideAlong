@@ -1,61 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import { getServices } from '../api/serviceApi';
+import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
 import './HomePage.css';
 
-const HomePage = () => {
-  const [services, setServices] = useState([]);
+import HomeSection from '../sections/HomeSection';
+import ServicesSection from '../sections/ServicesSection';
+import ActivitySection from '../sections/ActivitySection';
+import AccountSection from '../sections/AccountSection';
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      const data = await getServices();
-      setServices(data);
-    };
-    fetchServices();
-  }, []);
+const Home = () => {
+  const [activeSection, setActiveSection] = useState('home');
 
-  const handleLogin = () => {
-    alert('Login button clicked!');
-  };
-
-  const handleSignUp = () => {
-    alert('Sign Up button clicked!');
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'home':
+        return <HomeSection />;
+      case 'services':
+        return <ServicesSection />;
+      case 'activity':
+        return <ActivitySection />;
+      case 'account':
+        return <AccountSection />;
+      default:
+        return <HomeSection />;
+    }
   };
 
   return (
-    <div className="homepage">
-      <h1 className="homepage-title">Welcome to Multi-Modal Transport</h1>
-
-      {/* Search Bar */}
-      <div className="search-bar">
-        <input type="text" placeholder="Starting Point" />
-        <input type="text" placeholder="Destination" />
-        <input type="datetime-local" />
-        <button>Search</button>
+    <>
+      <Navbar />
+      <div className="home-container">
+        <div className="home-tabs">
+          <button
+            className={`tab ${activeSection === 'home' ? 'active' : ''}`}
+            onClick={() => setActiveSection('home')}
+          >
+            Home
+          </button>
+          <button
+            className={`tab ${activeSection === 'services' ? 'active' : ''}`}
+            onClick={() => setActiveSection('services')}
+          >
+            Services
+          </button>
+          <button
+            className={`tab ${activeSection === 'activity' ? 'active' : ''}`}
+            onClick={() => setActiveSection('activity')}
+          >
+            Activity
+          </button>
+          <button
+            className={`tab ${activeSection === 'account' ? 'active' : ''}`}
+            onClick={() => setActiveSection('account')}
+          >
+            Account
+          </button>
+        </div>
+        <div className="home-content">{renderSection()}</div>
       </div>
-
-      {/* Banner Section */}
-      <div className="banner">
-        <h2>Convenient, Affordable, and Sustainable Travel</h2>
-      </div>
-
-      {/* Login/Signup Buttons */}
-      <div className="auth-buttons">
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleSignUp}>Sign Up</button>
-      </div>
-
-      {/* Preview Cards */}
-      <div className="service-cards">
-        {services.map((service) => (
-          <div className="service-card" key={service.id}>
-            <div className="service-icon">{service.icon}</div>
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
-export default HomePage;
+export default Home;
